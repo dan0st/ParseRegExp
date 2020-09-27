@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_parseregexp" default="compile.module.parseregexp">
+  <dirname property="module.parseregexp.basedir" file="${ant.file.module_parseregexp}"/>
+  
+  <property name="module.jdk.home.parseregexp" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.parseregexp" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.parseregexp" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.parseregexp" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="parseregexp.output.dir" value="${module.parseregexp.basedir}/target/classes"/>
+  <property name="parseregexp.testoutput.dir" value="${module.parseregexp.basedir}/target/test-classes"/>
+  
+  <path id="parseregexp.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="parseregexp.module.production.classpath">
+    <path refid="${module.jdk.classpath.parseregexp}"/>
+  </path>
+  
+  <path id="parseregexp.runtime.production.module.classpath">
+    <pathelement location="${parseregexp.output.dir}"/>
+  </path>
+  
+  <path id="parseregexp.module.classpath">
+    <path refid="${module.jdk.classpath.parseregexp}"/>
+    <pathelement location="${parseregexp.output.dir}"/>
+  </path>
+  
+  <path id="parseregexp.runtime.module.classpath">
+    <pathelement location="${parseregexp.testoutput.dir}"/>
+    <pathelement location="${parseregexp.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.parseregexp">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.parseregexp">
+    <patternset refid="excluded.from.module.parseregexp"/>
+  </patternset>
+  
+  <path id="parseregexp.module.sourcepath">
+    <dirset dir="${module.parseregexp.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="parseregexp.module.test.sourcepath">
+    <dirset dir="${module.parseregexp.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.parseregexp" depends="compile.module.parseregexp.production,compile.module.parseregexp.tests" description="Compile module ParseRegExp"/>
+  
+  <target name="compile.module.parseregexp.production" depends="register.custom.compilers" description="Compile module ParseRegExp; production classes">
+    <mkdir dir="${parseregexp.output.dir}"/>
+    <javac2 destdir="${parseregexp.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.parseregexp}/javac">
+      <compilerarg line="${compiler.args.parseregexp}"/>
+      <bootclasspath refid="parseregexp.module.bootclasspath"/>
+      <classpath refid="parseregexp.module.production.classpath"/>
+      <src refid="parseregexp.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.parseregexp"/>
+    </javac2>
+    
+    <copy todir="${parseregexp.output.dir}">
+      <fileset dir="${module.parseregexp.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.parseregexp.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.parseregexp.tests" depends="register.custom.compilers,compile.module.parseregexp.production" description="compile module ParseRegExp; test classes" unless="skip.tests">
+    <mkdir dir="${parseregexp.testoutput.dir}"/>
+    <javac2 destdir="${parseregexp.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.parseregexp}/javac">
+      <compilerarg line="${compiler.args.parseregexp}"/>
+      <bootclasspath refid="parseregexp.module.bootclasspath"/>
+      <classpath refid="parseregexp.module.classpath"/>
+      <src refid="parseregexp.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.parseregexp"/>
+    </javac2>
+    
+    <copy todir="${parseregexp.testoutput.dir}">
+      <fileset dir="${module.parseregexp.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.parseregexp" description="cleanup module">
+    <delete dir="${parseregexp.output.dir}"/>
+    <delete dir="${parseregexp.testoutput.dir}"/>
+  </target>
+</project>

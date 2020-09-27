@@ -1,0 +1,14 @@
+17.11.2014 16:33:44.535 TRACE: 9.6.25.83:64812	> DiscountCard [barCode=780010998601, name=Дисконтная карта № 780010998601, percent=0.0, clientIndex=0, customer=Кучерявенко О.А., custCode=14177225, category=1, custCatCode=10, discCliTurn=139.0, marksCount=0, dateBegin=Sun Apr 17 00:00:00 MSK 2011, dateEnd=Fri Dec 31 23:59:00 MSK 2049, custBornDate=Thu Jun 12 16:33:44 MSK 1952, weekDays=127, status=50, cardType=5]
+17.11.2014 16:33:44.535 TRACE: 9.6.25.83:64812	< CHEQUEADVERTISE; data.length = 0
+17.11.2014 16:33:42.941 TRACE: 9.6.25.83:64806	< Position [pos_ID=3, item=208953_ST, dateOperation=Mon Nov 17 15:33:32 MSK 2014, depart=0, quant=1.0, price=314.99, priceDisc=314.99, ck_Summa=314.99, ck_NDS=0.0, discSumma=0.0, discPercent=0.0, minPrice=0.0, defDiscSumma=0.0, numOldPos=3, numKit=0, barCode=4607029345837, barCode1=, fixPrice=0.0, isGift=false]
+17.11.2014 16:33:42.941 TRACE: 9.6.25.83:64806	< Pay [payKind=0, dateOperation=Mon Nov 17 15:33:32 MSK 2014, payType=1, paySumma=1020.0, payNumber=]
+17.11.2014 16:33:42.941 TRACE: 9.6.25.83:64806	< Pay [payKind=0, dateOperation=Mon Nov 17 15:33:32 MSK 2014, payType=1, paySumma=-101.0, payNumber=back]
+17.11.2014 16:33:42.941 TRACE: 9.6.25.83:64806	< DISCOUNT; data.length = 734
+17.11.2014 16:33:42.941 TRACE: 9.6.25.83:64806	SendPacket - Ok
+17.11.2014 16:33:43.066 INFO : Cash connected from 9.6.25.83:64807 (#2)
+17.11.2014 16:33:43.066 TRACE: 9.6.25.83:64807	Declared size is 1856; version = 10
+17.11.2014 16:33:43.066 TRACE: 9.6.25.83:64807	Count is 1856
+17.11.2014 16:33:43.066 TRACE: 9.6.25.83:64807	Command = DISCOUNT
+17.11.2014 16:33:43.066 TRACE: 9.6.25.83:64807	subDataType = 51; Subdata size 97
+17.11.2014 16:33:43.066 TRACE: 9.6.25.83:64807	> Cheque [shopIndex=12, cashNumber=12, isReturn=false, ck_NSmena=1628, ck_Number=453141, ck_Summa=144.0, ck_Discount=8.11, ck_NDS=0.0, discPercent=0.0, defDiscount=0.0, defDiscountPerc=0.0, buyerSum=0.0, tabNumber=, numIteration=1, idSetV10=0]
+17.11.2014 16:33:43.066 TRACE: 9.6.25.83:64807	subDataType = 52; Subdata size 177
